@@ -21,3 +21,20 @@ The programs can compress and decompress text file consisting of 128 ASCII chara
 
 1. Open file, recreate Huffman Tree based on Huffman Encode Table;
 2. Decode the file based on the tree and store it to the desired file.
+
+## Build and test
+
+```bash
+cmake -S . -B build -DCMAKE_CXX_COMPILER=g++
+cmake --build build
+ctest --test-dir build --output-on-failure
+```
+
+Run manually:
+
+```bash
+./build/huffmanCoding input.txt output.huf
+./build/huffmanDecoding output.huf restored.txt
+```
+
+Input is limited to 7-bit ASCII bytes (0–127). Empty files and bytes >= 128 are rejected with an error message.
